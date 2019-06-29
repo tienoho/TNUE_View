@@ -7,7 +7,8 @@ public class Input {
     private static String aUrl, aUri;
     private static final String HOST = "http://catalog.dhsptn.edu.vn";
     //private static final String MY_HOST = "https://databases.tdtu.edu.vn:8443";
-    private static final String MY_HOST = "https://viewpdf.cleverapps.io";
+    //private static final String MY_HOST = "https://ilink.dhsptn.edu.vn";
+    private static final String MY_HOST = "https://viewpdf.herokuapp.com";
     // private static final String HOST = "http://aleph.ted.com.vn:8991";
     private static final String HTTP = "http://";
     private static final String HTTPS = "https://";
