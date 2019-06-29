@@ -1,0 +1,28 @@
+Trình đọc tài liệu pdf
+
+Package : com.sad
+
+(1) FileControl : Nhận thông tin đầu vào từ aleph bao gồm URL và URI
+    1.1 Nhận dữ liệu về tài liệu thông qua class com.sad.model.input lấy ra thông tin : bib, sequence, url
+    1.2 Ghi dữ liệu ban đầu về tài liệu vào bảng HSQLDB. Sử dụng class com.sad.utils.Report
+    1.3 Chuyển sang phần tiếp theo url mang theo id của phiên làm việc
+(2) AccountControl (option) : Lấy tài khoản đã đăng nhập CAS -> lấy thông tin tài khoản từ Oracle
+    2.1 phần kiểm tra tài khoản có thể bỏ hoặc sử dụng, phần kiểm tra tài khoản kết hợp với câu lệnh lấy tài khoản người
+    dùng đã đăng nhập sử dụng CAS.
+    2.2 Lấy tên tài khoản đăng nhập trên cas
+    2.3 thông qua tên đăng nhập CAS sử dụng class com.sad.model.Account để lấy ra thông tin tài khoản : borStatus,borType,username(*)
+    (*) aleph sử dụng 2 định danh cho 1 tài khoản id và barcode -> class kiểm tra tài khoản đăng nhập vào và lấy ra tài khoản là Z308_ID
+    2.4 Class com.sad.model.Access dùng để lấy quyền truy cập tài liệu của tài khoản
+        -   Lấy dữ liệu từ bảng Z403 : Z403_note_1 và Z403_note_2 ( quy định trước với thư viện )
+        -   Kết hợp so sánh với điều kiện được đặt ra ghi trong Z403_note_1 và Z403_note_2 để cấp quyền sử dụng trên view
+(3) InfoControl : Từ số bib của tài khoản lấy thông tin về tài liệu từ bảng LSP01Z00
+    3.1 Lấy thông tin tài liệu
+    3.2 chuyển trang sang phần hiển thị
+    3.3 khi chọn chức năng đọc hoặc tải về sẽ lưu thêm log về cách sử dụng tài liệu của tài khoản
+(4) info.jsp
+    4.1 hiển thị thông tin tài liệu
+    4.2 lấy về quyền truy cập tài liệu để cấp quyền sử dụng
+(5) view.jsp
+    5.1 kiểm tra quyền truy cập tài liệu
+    5.2 Hiển thị mục lục của tài liệu com.sad.model.BookmarCls
+    5.3 Hiển thị nội dung tài liệu com.sad.model.Content
