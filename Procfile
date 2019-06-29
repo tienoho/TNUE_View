@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar target/ebook/WEB-INF/lib/webapp-runner.jar --port $PORT target/*.war
